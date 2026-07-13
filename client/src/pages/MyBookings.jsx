@@ -3,6 +3,7 @@ import Title from '../components/Title';
 import { assets, dummyMyBookingsData } from '../assets/assets';
 import toast from 'react-hot-toast';
 import { motion } from 'motion/react';
+import { useAppContext } from '../context/AppContext';
 
 const MyBookings = () => {
     const { axios, user, currency } = useAppContext();
