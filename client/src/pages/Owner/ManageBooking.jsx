@@ -78,14 +78,14 @@ const ManageBooking = () => {
                                 </td>
 
                                 <td className="p-3">
-                                    {booking.status === 'pending' ? (
+                                    {booking.status === 'Pending' ? (
                                         <select onChange={e => changeBookingStatus(booking._id, e.target.value)} value={booking.status} className="px-2 py-1.5 mt-1 text-gray-500 border border-borderColor rounded-md outline-none">
-                                            <option value="pending">Pending</option>
-                                            <option value="cancelled">Cancelled</option>
-                                            <option value="confirmed">Confirmed</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Cancelled">Cancelled</option>
+                                            <option value="Confirmed">Confirmed</option>
                                         </select>
                                     ) : (
-                                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${booking.status === 'confirmed' ? 'bg-green-100 text-green-500' : 'bg-red-100 text-red-500'}`}>{booking.status}</span>
+                                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${booking.status === 'Confirmed' ? 'bg-green-100 text-green-500' : 'bg-red-100 text-red-500'}`}>{booking.status}</span>
                                     )}
                                 </td>
                             </tr>

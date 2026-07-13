@@ -174,7 +174,7 @@ export const getDashboardData = async (req, res) => {
 
         if(role !== "Owner")
         {
-            return res.json(403).json({
+            return res.status(403).json({
                 success : false, 
                 message : "Unauthorized - User must be an Owner"
             });
@@ -186,11 +186,11 @@ export const getDashboardData = async (req, res) => {
         console.log('Current User id: ', _id);
         console.log('Do they match ?', allCars[0]?.owner?.toString() === _id.toString());
 
-        const cars = await Car.find({Owner: _id});
-        const bookings = await Booking.find({ Owner: _id}).populate('car').sort({ createdAt : -1});
+        const cars = await Car.find({owner: _id});
+        const bookings = await Booking.find({ owner: _id}).populate('car').sort({ createdAt : -1});
 
-        const pendingBookings = await Booking.find({Owner : _id, status : "Pending"});
-        const completedBookings = await Booking.find({Owner : _id, status : "Confirmed"});
+        const pendingBookings = await Booking.find({owner : _id, status : "Pending"});
+        const completedBookings = await Booking.find({owner : _id, status : "Confirmed"});
 
         // Calculate monthly bookings from bookings where status is confirmed
         const monthlyRevenue = bookings.slice().filter(booking => booking.status === 'Confirmed').reduce((acc, booking) => acc + booking.price, 0);
